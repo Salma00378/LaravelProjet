@@ -1,14 +1,14 @@
 Projet Blog Laravel
 Un blog simple développé avec Laravel permettant aux utilisateurs de créer, modifier, voir et supprimer des articles, avec un système d'authentification intégré.
-📌 Prérequis
+Prérequis
 Avant de commencer, assurez-vous d’avoir installé :
 •	PHP 7.3 ou supérieur
 •	Composer
 •	Node.js & npm
 •	MySQL
-📥 Installation
+Installation
 Cloner le dépôt
-git clone https://github.com/HajarSatlane/BlogLaravel.git  
+git clone https://github.com/Salma00378/LaravelProjet.git
 cd BlogLaravel
 Installer les dépendances PHP
 
@@ -22,6 +22,7 @@ DB_PORT=3306
 DB_DATABASE=blog_laravel  
 DB_USERNAME=root  
 DB_PASSWORD=
+
 Générer la clé d’application
 php artisan key:generate
 Exécuter les migrations de la base de données
