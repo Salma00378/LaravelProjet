@@ -11,16 +11,16 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::where('user_id', Auth::id())->paginate(10);
+        $posts = Post::where('user_id', Auth::id())->get();
         return view('index', compact('posts'));
     }
     
 
-    public function create() {
+    public function createPost() {
         return view('create');
     }
 
-    public function store(Request $request)
+    public function ajouter(Request $request)
     {
         $post = new Post();
         $post->title = $request->input('title');
@@ -31,7 +31,7 @@ class PostController extends Controller
         return view('create');
     }
 
-    public function delete($id)
+    public function supprimer($id)
     {
         $post = Post::findOrFail($id);
 
@@ -40,7 +40,7 @@ class PostController extends Controller
         return redirect()->route('posts.list')->with('success', 'Article créé avec succès!');
     }
 
-    public function show($id)
+    public function afficher($id)
     {
         $post = Post::findOrFail($id);
 
@@ -48,29 +48,24 @@ class PostController extends Controller
     }
 
 
-    public function edit($id)
+    public function editer($id)
     {
         $post = Post::findOrFail($id);
 
         return view('edit', compact('post'));
     }
 
-    public function update(Request $request, $id)
+    public function modifier(Request $request, $id)
     {
         $post = Post::findOrFail($id);
 
-
-        $request->validate([
-            'title' => 'required|max:255',
-            'content' => 'required',
-        ]);
 
         $post->update([
             'title' => $request->title,
             'content' => $request->content,
         ]);
 
-        return redirect()->route('posts.list')->with('success', 'Article mis à jour avec succès.');
+        return redirect()->route('posts.list');
     }
 
 
